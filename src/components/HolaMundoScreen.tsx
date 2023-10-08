@@ -12,7 +12,7 @@ export const HolaMundoScreen = () => {
     }}>
       <Text style={{
         fontSize:45,
-      }}>Hola munditos</Text>
+      }}> Macarena te amo :D</Text>
     </View>
     </>
   )
