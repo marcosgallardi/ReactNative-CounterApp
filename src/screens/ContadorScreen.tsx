@@ -1,19 +1,26 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import { Fab } from '../components/Fab';
+
+
 
 export const ContadorScreen = () => {
   const [contador, setContador] = useState(10);
 
+  
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Contador: {contador}</Text>
+      <Text style={styles.title}>Contador: {}</Text>
 
-      <TouchableOpacity onPress={() => setContador(contador + 1)}>
-        <View
-          style={styles.buttonIncrement}>
-          <Text>+1</Text>
+      <Fab title='+1' contador={contador} setContador={setContador}/>
+      {/* <TouchableOpacity
+        style={styles.fabLocationLF}
+        onPress={() => setContador(contador - 1)}>
+        <View style={styles.fab}>
+          <Text style={styles.fabText}>-1</Text>
         </View>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };
@@ -24,13 +31,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
+    color: 'black',
     textAlign: 'center',
     fontSize: 40,
     top: -15,
-    color: 'black',
   },
-  buttonIncrement:{
-    backgroundColor: 'red',
-    borderRadius: 100,
-  }
+  
 });
