@@ -1,23 +1,24 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableNativeFeedback, View} from 'react-native';
 
 interface Props {
   title: string;
-  contador: number;
-  setContador: number;
+  position: 'br' | 'bl';
+  onPress: () => void;
 }
 
-export const Fab = ({title, setContador, contador}: Props) => {
+export const Fab = ({title, onPress, position}: Props) => {
   return (
-    <>
-      <TouchableOpacity
-        style={styles.fabLocationBR}
-        onPress={() => setContador(contador + 1)}>
+    <View
+      style={position === 'br' ? styles.fabLocationBR : styles.fabLocationLF}>
+      <TouchableNativeFeedback
+        onPress={onPress}
+        background={TouchableNativeFeedback.Ripple("blue", false,10)}>
         <View style={styles.fab}>
           <Text style={styles.fabText}>{title}</Text>
         </View>
-      </TouchableOpacity>
-    </>
+      </TouchableNativeFeedback>
+    </View>
   );
 };
 
@@ -38,6 +39,15 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     width: 60,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.44,
+    shadowRadius: 10.32,
+
+    elevation: 16,
   },
   fabText: {
     color: 'white',
